@@ -645,9 +645,9 @@ public class AddTransactionActivity extends AppCompatActivity {
         card.setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12));
         card.setBackgroundColor(Color.WHITE);
         card.setElevation(dpToPx(2));
-        LinearLayout.LayoutParams cp = new LinearLayout.LayoutParams(-1, -2);
-        cp.setMargins(0, 0, 0, dpToPx(12));
-        card.setLayoutParams(cp);
+        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(-1, -2);
+        cardParams.setMargins(0, 0, 0, dpToPx(12));
+        card.setLayoutParams(cardParams);
 
         TextView heading = new TextView(this);
         heading.setText("KACHA CALCULATION");
@@ -656,36 +656,179 @@ public class AddTransactionActivity extends AppCompatActivity {
         heading.setTypeface(null, Typeface.BOLD);
         card.addView(heading);
 
-        EditText date = createEditText("Date (dd-mm-yyyy)", INPUT_HEIGHT_DP);
-        date.setFocusable(false); date.setClickable(true);
+        // Date and name on the same line.
+        LinearLayout dateNameRow = new LinearLayout(this);
+        dateNameRow.setOrientation(LinearLayout.HORIZONTAL);
+        dateNameRow.setGravity(Gravity.CENTER_VERTICAL);
+        EditText date = createEditText("Date", INPUT_HEIGHT_DP);
+        date.setFocusable(false);
+        date.setClickable(true);
         date.setOnClickListener(v -> openDatePicker(date));
-        EditText name = createEditText("Name / Particulars", INPUT_HEIGHT_DP);
-        card.addView(createLabel("Date", Color.DKGRAY)); card.addView(date);
-        card.addView(createLabel("Name / Particulars", Color.DKGRAY)); card.addView(name);
+        EditText name = createEditText("Name", INPUT_HEIGHT_DP);
+        LinearLayout.LayoutParams half = new LinearLayout.LayoutParams(0, -2, 1f);
+        half.setMargins(0, 0, dpToPx(5), 0);
+        dateNameRow.addView(date, half);
+        LinearLayout.LayoutParams halfName = new LinearLayout.LayoutParams(0, -2, 1f);
+        halfName.setMargins(dpToPx(5), 0, 0, 0);
+        dateNameRow.addView(name, halfName);
+        card.addView(dateNameRow);
 
+        // Debit and Credit columns.
         LinearLayout columns = new LinearLayout(this);
         columns.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout debit = new LinearLayout(this); debit.setOrientation(LinearLayout.VERTICAL);
-        LinearLayout credit = new LinearLayout(this); credit.setOrientation(LinearLayout.VERTICAL);
-        debit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1));
-        credit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1));
-        debit.setPadding(0, 0, dpToPx(6), 0); credit.setPadding(dpToPx(6), 0, 0, 0);
-        String[] labels = {"Kacha Pure", "Rate Cutting", "Cash", "Final Kacha Pure"};
-        EditText[] debitFields = new EditText[4];
-        EditText[] creditFields = new EditText[4];
-        for (int i = 0; i < 4; i++) {
-            debit.addView(createLabel("Debit " + labels[i], Color.parseColor("#059669")));
-            debitFields[i] = createNumberEditText("0.00", INPUT_HEIGHT_DP);
-            debit.addView(debitFields[i]);
-            credit.addView(createLabel("Credit " + labels[i], Color.parseColor("#DC2626")));
-            creditFields[i] = createNumberEditText("0.00", INPUT_HEIGHT_DP);
-            credit.addView(creditFields[i]);
-        }
-        columns.addView(debit); columns.addView(credit); card.addView(columns);
-        card.setTag(new Object[]{date, name, debitFields[0], creditFields[0], debitFields[1], creditFields[1], debitFields[2], creditFields[2], debitFields[3], creditFields[3]});
+        LinearLayout debit = new LinearLayout(this);
+        debit.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout credit = new LinearLayout(this);
+        credit.setOrientation(LinearLayout.VERTICAL);
+        debit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1f));
+        credit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1f));
+        debit.setPadding(0, 0, dpToPx(6), 0);
+        credit.setPadding(dpToPx(6), 0, 0, 0);
+
+        int green = Color.parseColor("#059669");
+        int red = Color.parseColor("#DC2626");
+
+        // Temporary Kacha Pure: (input1 * input2) / 100.
+        debit.addView(createLabel("Debit Temp Kacha Pure", green));
+        EditText debitTempInput1 = createNumberEditText("Input 1", INPUT_HEIGHT_DP);
+        EditText debitTempInput2 = createNumberEditText("Input 2", INPUT_HEIGHT_DP);
+        EditText debitTempPure = createNumberEditText("Output", INPUT_HEIGHT_DP);
+        debitTempPure.setFocusable(false);
+        debitTempPure.setClickable(false);
+        addKachaFormulaInputs(debit, debitTempInput1, debitTempInput2, debitTempPure);
+
+        credit.addView(createLabel("Credit Temp Kacha Pure", red));
+        EditText creditTempInput1 = createNumberEditText("Input 1", INPUT_HEIGHT_DP);
+        EditText creditTempInput2 = createNumberEditText("Input 2", INPUT_HEIGHT_DP);
+        EditText creditTempPure = createNumberEditText("Output", INPUT_HEIGHT_DP);
+        creditTempPure.setFocusable(false);
+        creditTempPure.setClickable(false);
+        addKachaFormulaInputs(credit, creditTempInput1, creditTempInput2, creditTempPure);
+
+        // Rate Cutting inputs.
+        debit.addView(createLabel("Debit Rate Cutting", green));
+        EditText debitRateCutting = createNumberEditText("Rate Cutting", INPUT_HEIGHT_DP);
+        debit.addView(debitRateCutting);
+        credit.addView(createLabel("Credit Rate Cutting", red));
+        EditText creditRateCutting = createNumberEditText("Rate Cutting", INPUT_HEIGHT_DP);
+        credit.addView(creditRateCutting);
+
+        // Cash inputs.
+        debit.addView(createLabel("Debit Cash", green));
+        EditText debitCash = createNumberEditText("Cash", INPUT_HEIGHT_DP);
+        debit.addView(debitCash);
+        credit.addView(createLabel("Credit Cash", red));
+        EditText creditCash = createNumberEditText("Cash", INPUT_HEIGHT_DP);
+        credit.addView(creditCash);
+
+        // Kacha Pure outputs: (cash / rate cutting) * 1000.
+        debit.addView(createLabel("Debit Kacha Pure", green));
+        EditText debitKachaPure = createNumberEditText("Calculated Kacha Pure", INPUT_HEIGHT_DP);
+        debitKachaPure.setFocusable(false);
+        debitKachaPure.setClickable(false);
+        debit.addView(debitKachaPure);
+
+        credit.addView(createLabel("Credit Kacha Pure", red));
+        EditText creditKachaPure = createNumberEditText("Calculated Kacha Pure", INPUT_HEIGHT_DP);
+        creditKachaPure.setFocusable(false);
+        creditKachaPure.setClickable(false);
+        credit.addView(creditKachaPure);
+
+        columns.addView(debit);
+        columns.addView(credit);
+        card.addView(columns);
+
+        // Auto-calculate both temporary pure outputs.
+        TextWatcher debitTempWatcher = createCalculationWatcher(
+                debitTempInput1, debitTempInput2, debitTempPure, 100.0, false);
+        debitTempInput1.addTextChangedListener(debitTempWatcher);
+        debitTempInput2.addTextChangedListener(debitTempWatcher);
+        TextWatcher creditTempWatcher = createCalculationWatcher(
+                creditTempInput1, creditTempInput2, creditTempPure, 100.0, false);
+        creditTempInput1.addTextChangedListener(creditTempWatcher);
+        creditTempInput2.addTextChangedListener(creditTempWatcher);
+
+        // Auto-calculate final Kacha Pure from Cash and Rate Cutting.
+        TextWatcher debitKachaWatcher = createCalculationWatcher(
+                debitCash, debitRateCutting, debitKachaPure, 1000.0, true);
+        debitCash.addTextChangedListener(debitKachaWatcher);
+        debitRateCutting.addTextChangedListener(debitKachaWatcher);
+        TextWatcher creditKachaWatcher = createCalculationWatcher(
+                creditCash, creditRateCutting, creditKachaPure, 1000.0, true);
+        creditCash.addTextChangedListener(creditKachaWatcher);
+        creditRateCutting.addTextChangedListener(creditKachaWatcher);
+
+        // Tag order is used by Firebase save below. Keep every field in this order.
+        card.setTag(new Object[]{
+                date, name,
+                debitTempInput1, debitTempInput2, debitTempPure,
+                creditTempInput1, creditTempInput2, creditTempPure,
+                debitRateCutting, creditRateCutting,
+                debitCash, creditCash,
+                debitKachaPure, creditKachaPure
+        });
         setupSwipeGesture(card, true);
         containerDynamicRows.addView(card);
         dynamicKachaRows.add(card);
+    }
+
+    private void addKachaFormulaInputs(LinearLayout column, EditText input1,
+                                       EditText input2, EditText output) {
+        LinearLayout formulaRow = new LinearLayout(this);
+        formulaRow.setOrientation(LinearLayout.HORIZONTAL);
+        formulaRow.setGravity(Gravity.CENTER_VERTICAL);
+
+        input1.setHint("A");
+        input2.setHint("B");
+        output.setHint("Pure");
+        input1.setTextSize(11);
+        input2.setTextSize(11);
+        output.setTextSize(11);
+        input1.setPadding(dpToPx(4), dpToPx(6), dpToPx(4), dpToPx(6));
+        input2.setPadding(dpToPx(4), dpToPx(6), dpToPx(4), dpToPx(6));
+        output.setPadding(dpToPx(4), dpToPx(6), dpToPx(4), dpToPx(6));
+
+        formulaRow.addView(input1, new LinearLayout.LayoutParams(0, dpToPx(INPUT_HEIGHT_DP), 1f));
+        TextView multiply = new TextView(this);
+        multiply.setText("×");
+        multiply.setTextSize(12);
+        multiply.setGravity(Gravity.CENTER);
+        formulaRow.addView(multiply, new LinearLayout.LayoutParams(dpToPx(14), -2));
+        formulaRow.addView(input2, new LinearLayout.LayoutParams(0, dpToPx(INPUT_HEIGHT_DP), 1f));
+        TextView arrow = new TextView(this);
+        arrow.setText("→");
+        arrow.setTextSize(12);
+        arrow.setGravity(Gravity.CENTER);
+        formulaRow.addView(arrow, new LinearLayout.LayoutParams(dpToPx(14), -2));
+        formulaRow.addView(output, new LinearLayout.LayoutParams(0, dpToPx(INPUT_HEIGHT_DP), 1.15f));
+        column.addView(formulaRow);
+    }
+
+    private TextWatcher createCalculationWatcher(EditText input1, EditText input2,
+                                                   EditText output, double multiplier,
+                                                   boolean divideThenMultiply) {
+        return new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override public void afterTextChanged(Editable editable) {
+                double first = safeParseDouble(input1.getText().toString());
+                double second = safeParseDouble(input2.getText().toString());
+                boolean hasFirst = input1.getText().toString().trim().length() > 0;
+                boolean hasSecond = input2.getText().toString().trim().length() > 0;
+                if (!hasFirst || !hasSecond || (divideThenMultiply && second == 0)) {
+                    output.setText("");
+                    return;
+                }
+                double result = divideThenMultiply
+                        ? (first / second) * multiplier
+                        : (first * second) / multiplier;
+                if (Double.isNaN(result) || Double.isInfinite(result)) {
+                    output.setText("");
+                } else {
+                    output.setText(String.format(Locale.US, "%.3f", result));
+                }
+            }
+        };
     }
 
     private void addDynamicTransactionRow() {
@@ -1398,7 +1541,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         if (!dynamicRows.isEmpty()) transactionData.put("dynamicRows", dynamicRows);
 
-        // Kacha calculation rows are stored separately until its business formula is provided.
+        // Kacha calculations with live formula outputs.
         Map<String, Object> kachaCalculations = new HashMap<>();
         int kachaIndex = 0;
         for (View kachaView : dynamicKachaRows) {
@@ -1406,17 +1549,31 @@ public class AddTransactionActivity extends AppCompatActivity {
             if (!(tag instanceof Object[])) continue;
             Object[] f = (Object[]) tag;
             Map<String, Object> row = new HashMap<>();
-            String[] keys = {"date", "name", "debitKachaPure", "creditKachaPure", "debitRateCutting", "creditRateCutting", "debitCash", "creditCash", "debitFinalPure", "creditFinalPure"};
-            for (int k = 0; k < f.length; k++) {
-                if (f[k] instanceof EditText) {
-                    String value = ((EditText) f[k]).getText().toString().trim();
-                    if (!value.isEmpty()) {
-                        if (k == 0 || k == 1) row.put(keys[k], value);
-                        else row.put(keys[k], safeParseDouble(value));
+            String[] keys = {
+                    "date", "name",
+                    "debitTempInput1", "debitTempInput2", "debitTempKachaPure",
+                    "creditTempInput1", "creditTempInput2", "creditTempKachaPure",
+                    "debitRateCutting", "creditRateCutting",
+                    "debitCash", "creditCash",
+                    "debitKachaPure", "creditKachaPure"
+            };
+            boolean hasUserData = false;
+            for (int k = 0; k < f.length && k < keys.length; k++) {
+                if (!(f[k] instanceof EditText)) continue;
+                String value = ((EditText) f[k]).getText().toString().trim();
+                if (value.isEmpty()) continue;
+                if (k == 0 || k == 1) {
+                    row.put(keys[k], value);
+                    if (!value.isEmpty()) hasUserData = true;
+                } else {
+                    row.put(keys[k], safeParseDouble(value));
+                    // Only input fields count as user-entered data; outputs are calculated.
+                    if (k == 2 || k == 3 || k == 5 || k == 6 || k == 8 || k == 9 || k == 10 || k == 11) {
+                        hasUserData = true;
                     }
                 }
             }
-            if (!row.isEmpty()) kachaCalculations.put("row" + (++kachaIndex), row);
+            if (hasUserData) kachaCalculations.put("row" + (++kachaIndex), row);
         }
         if (!kachaCalculations.isEmpty()) transactionData.put("kachaCalculations", kachaCalculations);
 
