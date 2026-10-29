@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/row_root"
+    android:layout_width="777dp"
+    android:layout_height="58dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="#FFFFFF">
+
+    <!-- ================================================= -->
+    <!-- ROW NUMBER -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/tv_row_number"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="01"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#344054"/>
+
+
+    <!-- ================================================= -->
+    <!-- RED -->
+    <!-- ================================================= -->
+
+    <CheckBox
+        android:id="@+id/cb_color_1"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="0dp"
+        android:buttonTint="#EF4444"/>
+
+
+    <!-- ================================================= -->
+    <!-- BLUE -->
+    <!-- ================================================= -->
+
+    <CheckBox
+        android:id="@+id/cb_color_2"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="0dp"
+        android:buttonTint="#3B82F6"/>
+
+
+    <!-- ================================================= -->
+    <!-- GREEN -->
+    <!-- ================================================= -->
+
+    <CheckBox
+        android:id="@+id/cb_color_3"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="0dp"
+        android:buttonTint="#22C55E"/>
+
+
+    <!-- ================================================= -->
+    <!-- ORANGE -->
+    <!-- ================================================= -->
+
+    <CheckBox
+        android:id="@+id/cb_color_4"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="0dp"
+        android:buttonTint="#F59E0B"/>
+
+
+    <!-- ================================================= -->
+    <!-- WEIGHT -->
+    <!-- ================================================= -->
+
+    <EditText
+        android:id="@+id/et_row_weight"
+        android:layout_width="95dp"
+        android:layout_height="42dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center"
+        android:hint="0.000"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textSize="11sp"
+        android:textColor="#101828"
+        android:textColorHint="#98A2B3"/>
+
+
+    <!-- ================================================= -->
+    <!-- TOUCH -->
+    <!-- ================================================= -->
+
+    <EditText
+        android:id="@+id/et_row_touch"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center"
+        android:hint="0.000"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textSize="11sp"
+        android:textColor="#101828"
+        android:textColorHint="#98A2B3"/>
+
+
+    <!-- ================================================= -->
+    <!-- PURE -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/tv_row_pure"
+        android:layout_width="95dp"
+        android:layout_height="42dp"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:background="#F0FDF4"
+        android:text="0.000"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textColor="#15803D"/>
+
+
+    <!-- ================================================= -->
+    <!-- FORM NO -->
+    <!-- ================================================= -->
+
+    <EditText
+        android:id="@+id/et_row_form_no"
+        android:layout_width="90dp"
+        android:layout_height="42dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center"
+        android:hint="Form"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textSize="10sp"
+        android:textColor="#101828"
+        android:textColorHint="#98A2B3"/>
+
+
+    <!-- ================================================= -->
+    <!-- REFINERY -->
+    <!-- ================================================= -->
+
+    <EditText
+        android:id="@+id/et_row_refinery"
+        android:layout_width="110dp"
+        android:layout_height="42dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center"
+        android:hint="Refinery"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textSize="10sp"
+        android:textColor="#101828"
+        android:textColorHint="#98A2B3"/>
+
+
+    <!-- ================================================= -->
+    <!-- DELETE -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/btn_delete_row"
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="✕"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="#B42318"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/abstract_background"
+    android:padding="8dp"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top margin for status bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:minHeight="24dp" />
+
+        <!-- Header with Glass Morphism -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@drawable/header_glass_morphism"
+            android:layout_marginBottom="10dp"
+            android:elevation="8dp">
+
+            <!-- Back Button and Title Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/arrow"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Back" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CLOSED TRANSACTIONS"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:gravity="center" />
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+            </LinearLayout>
+
+            <!-- Customer Name with Icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/simple_customer_bg"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/person"
+                    android:contentDescription="User"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_customer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Name"
+                    android:textColor="#FFEB3B"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:alpha="0.95" />
+
+            </LinearLayout>
+
+            <!-- ============ STATS CARDS WITH FINAL BUTTON ============ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="3"
+                android:padding="5dp"
+                android:background="@drawable/stats_container_bg"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="5dp">
+
+                <!-- Status Closed Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:background="@drawable/stat_card_current_bg"
+                    android:layout_margin="2dp"
+                    android:elevation="2dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/closed"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_status_closed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CLOSED"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05" />
+
+                </LinearLayout>
+
+                <!-- FINAL BUTTON with Logo - CENTER -->
+                <LinearLayout
+                    android:id="@+id/finalize_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/stat_card_current_bg"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/btn_finalize_closed"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginBottom="4dp"
+                        android:src="@drawable/all" />
+
+                    <!-- Selected Count below Final button -->
+                    <TextView
+                        android:id="@+id/tv_selected_count_closed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05"
+                        android:text="FINAL"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Current Page Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:background="@drawable/stat_card_current_bg"
+                    android:layout_margin="2dp"
+                    android:elevation="2dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/page"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_page_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CURRENT PAGE"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ====================================================== -->
+            <!-- ========== FIXED: Select All Row with Left Label ===== -->
+            <!-- ====================================================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/stats_container_bg"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginBottom="4dp">
+
+                <!-- ========== SELECTED COUNT ON LEFT SIDE ========== -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="start|center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selected: "
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:alpha="0.9" />
+
+                    <TextView
+                        android:id="@+id/tv_selected_count_closed_trans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingStart="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" transactions"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:paddingStart="4dp" />
+
+                </LinearLayout>
+
+                <!-- ========== SELECT ALL BUTTON ON RIGHT SIDE ====== -->
+                <Button
+                    android:id="@+id/btn_select_all_closed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="Select All"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/go_button_bg"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Pagination Controls -->
+        <LinearLayout
+            android:id="@+id/pagination_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/abstract_container"
+            android:layout_marginBottom="8dp">
+
+            <!-- Page Navigation Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <ImageButton
+                    android:id="@+id/btn_first_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_first_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="First Page"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_previous_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_previous_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Previous Page"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_current_page_number"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/page_number_bg_selected" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_next_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_next_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Next Page"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_last_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_last_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Last Page"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <!-- Go to Page Input -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                android:background="@drawable/stats_container_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Go to page:"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/et_go_to_page"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:background="@drawable/go_to_text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:hint=""
+                    android:padding="4dp"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_pages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/ 0"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btn_go_to_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Go"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/go_button_bg"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Transaction List -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/glass_morphism_effect"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Closed Transactions List"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_marginBottom="16dp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/transaction_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="9dp" />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/abstract_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• PST Silver Ledger •"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:alpha="0.7"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:letterSpacing="0.2" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/abstract_divider" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:minHeight="16dp" />
+
+    </LinearLayout>
+</ScrollView>

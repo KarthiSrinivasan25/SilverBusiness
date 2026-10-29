@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="120dp"
+    android:viewportWidth="300"
+    android:viewportHeight="120">
+
+    <!-- Main gradient background -->
+    <path
+        android:fillColor="#667eea"
+        android:pathData="M0,0h300v120h-300z" />
+
+    <!-- Abstract wave shape -->
+    <path
+        android:fillColor="#764ba2"
+        android:pathData="M0,80 Q75,60 150,80 T300,80 L300,120 L0,120Z" />
+
+    <!-- Floating circles -->
+    <path
+        android:fillColor="#ffffff"
+        android:fillAlpha="0.1"
+        android:pathData="M250,30 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" />
+
+    <path
+        android:fillColor="#ffffff"
+        android:fillAlpha="0.15"
+        android:pathData="M50,20 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" />
+
+    <!-- Diagonal lines pattern -->
+    <path
+        android:strokeColor="#ffffff"
+        android:strokeWidth="1"
+        android:strokeAlpha="0.1"
+        android:pathData="M0,0 L300,120 M50,0 L300,70 M100,0 L300,20" />
+
+</vector>

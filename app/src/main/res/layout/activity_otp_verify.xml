@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fadingEdgeLength="0dp"
+    android:overScrollMode="never"
+    android:background="@drawable/add_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Header Section with Wave Background -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            >
+
+            <!-- Back Button -->
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/previous"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="56dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="12dp"
+                />
+
+            <!-- Title Section -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_centerInParent="true">
+
+                <!-- Verification Icon -->
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/pin"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Main Title -->
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verification"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#009688" />
+
+                <!-- Subtitle -->
+                <TextView
+                    android:id="@+id/subtitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter your OTP code"
+                    android:textSize="16sp"
+                    android:textColor="#E3F2FD"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Main Card Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/main_card_background"
+            android:layout_marginTop="-40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="32dp"
+            android:elevation="16dp"
+            android:outlineProvider="background">
+
+            <!-- OTP Input Section Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ENTER OTP CODE"
+                android:textSize="12sp"
+                android:textColor="#666666"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="16dp" />
+
+            <!-- OTP Input Field -->
+            <EditText
+                android:id="@+id/otpEt"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:hint="• • • • • •"
+                android:inputType="number"
+                android:textSize="24sp"
+                android:maxLength="6"
+                android:gravity="center"
+                android:background="@drawable/otp_edittext_background"
+                android:textColor="#222222"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_marginBottom="32dp"
+                android:cursorVisible="true"
+                android:selectAllOnFocus="true" />
+
+            <!-- Verify Button with Loading State -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginBottom="24dp">
+
+                <Button
+                    android:id="@+id/verifyBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="VERIFY &amp; CONTINUE"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_gradient_advanced"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:stateListAnimator="@null"
+                    android:elevation="4dp" />
+
+                <ProgressBar
+                    android:id="@+id/verifyProgress"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="#FFFFFF"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <!-- Timer Container (Visible when counting down) -->
+            <LinearLayout
+                android:id="@+id/timerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/resend_background"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_timer_icon"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resend code in "
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:id="@+id/timerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:00"
+                    android:textSize="14sp"
+                    android:textColor="#FF6B6B"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp" />
+
+            </LinearLayout>
+
+            <!-- Resend Container (Visible when timer ends) -->
+            <LinearLayout
+                android:id="@+id/resendContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Didn't receive the code?"
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:id="@+id/resendOtpText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Resend OTP"
+                    android:textSize="14sp"
+                    android:textColor="#4361EE"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Security Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="24dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/shield"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secured by Advanced Encryption"
+                android:textSize="12sp"
+                android:textColor="#888888"
+                android:letterSpacing="0.02" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

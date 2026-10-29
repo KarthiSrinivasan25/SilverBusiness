@@ -1,0 +1,68 @@
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.silverbusinessapp">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/circle_icon"
+        android:label="PST Silver"
+        android:roundIcon="@drawable/circle_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+
+
+        <activity android:name=".DashboardActivity" android:exported="false"/>
+
+        <activity android:name=".AddCustomerActivity" android:exported="false" />
+        <activity android:name=".ViewCustomerActivity" android:exported="false" />
+
+        <activity android:name=".SignupActivity" android:exported="false"/>
+        <activity android:name=".LoginActivity" android:exported="false"/>
+        <activity android:name=".ForgotPasswordActivity" android:exported="false" />
+        <activity android:name=".VerifyOtpActivity" android:exported="false" />
+        <activity android:name=".SetNewPasswordActivity" android:exported="false" />
+        <activity android:name=".EditTransactionActivity" android:exported="false" />
+        <activity android:name=".AddTransactionActivity" android:exported="false" />
+        <activity android:name=".UpdateTransactionActivity" android:exported="false" />
+        <activity android:name=".TotalCalculationActivity" android:exported="false" />
+        <activity android:name=".OtpVerifyActivity" android:exported="false" />
+        <activity android:name=".LogoutActivity" android:exported="false" />
+        <activity android:name=".RecycleBinActivity" android:exported="false" />
+        <activity android:name=".FingerprintAuthActivity" android:exported="false" />
+        <activity android:name=".PasswordSecurityActivity" android:exported="false" />
+        <activity android:name=".ClosedTransactionsActivity" android:exported="false" />
+
+        <activity
+            android:name=".KachaActivity"
+            android:exported="false" />
+
+        <activity android:name=".AddKachaActivity" android:exported="false" />
+        <activity android:name=".EditKachaActivity" android:exported="false" />
+
+        <activity android:name=".PdfViewerActivity" android:configChanges="orientation|screenSize" android:exported="false" />
+
+<activity android:name=".YearlyCustomersActivity" android:exported="false" />
+        <!-- New Launcher Activity -->
+        <activity android:name=".SplashActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

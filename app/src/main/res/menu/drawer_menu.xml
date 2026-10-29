@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_add_customer"
+        android:title="Add Customer"
+        android:icon="@drawable/ic_add_customer" />
+    <item
+        android:id="@+id/nav_view_customer"
+        android:title="View Customers"
+        android:icon="@drawable/ic_view_customers" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"
+        />
+</menu>

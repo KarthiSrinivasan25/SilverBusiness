@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="600dp"
+    android:height="800dp"
+    android:viewportWidth="600"
+    android:viewportHeight="800">
+
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M0,0h600v800h-600z" />
+
+    <!-- Abstract geometric shapes -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M-50,150 Q300,50 650,200 T-50,450Z" />
+
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M600,0 Q450,300 600,600 L800,600 L800,0Z" />
+
+    <path
+        android:fillColor="#475569"
+        android:pathData="M0,600 Q200,400 400,600 T0,800Z" />
+
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M300,0 Q500,150 300,300 Q100,150 300,0Z" />
+</vector>

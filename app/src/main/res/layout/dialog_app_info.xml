@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="8dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/info_dialog_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="top"
+        android:descendantFocusability="blocksDescendants">
+
+        <!-- Animated Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/info_header_gradient"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/info"
+                android:layout_marginEnd="16dp"
+                 />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Silver Business"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="App Information"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:alpha="0.9" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- App Info Cards in Custom Grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/info_card_background"
+            android:padding="15dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="App Details"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/info_primary_dark"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Custom Grid using LinearLayouts -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- First Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="12dp">
+
+                    <!-- App Name -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="@drawable/info_item_background"
+                        android:layout_marginEnd="6dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/pst_logo"
+
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="App Name"
+                            android:textSize="12sp"
+                            android:textColor="@color/dark_gray" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="PST Silver Ledger"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Version -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="@drawable/info_item_background"
+                        android:layout_marginStart="6dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/version"
+
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Version"
+                            android:textSize="12sp"
+                            android:textColor="@color/dark_gray" />
+
+                        <TextView
+                            android:id="@+id/app_version"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2.0"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Second Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Build Date -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="@drawable/info_item_background"
+                        android:layout_marginEnd="6dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/calendar"
+
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Build Date"
+                            android:textSize="12sp"
+                            android:textColor="@color/dark_gray" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="July 2025"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Developer -->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:background="@drawable/info_item_background"-->
+<!--                        android:layout_marginStart="6dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="24dp"-->
+<!--                            android:layout_height="24dp"-->
+<!--                            android:src="@drawable/development"-->
+
+<!--                            android:layout_marginBottom="8dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Developer"-->
+<!--                            android:textSize="12sp"-->
+<!--                            android:textColor="@color/dark_gray" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="ASD TechCreation"-->
+<!--                            android:textSize="12sp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_marginTop="4dp" />-->
+<!--                    </LinearLayout>-->
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Description Card with Expand/Collapse -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/info_card_background"
+            android:padding="15dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/info"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="About Our App"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark" />
+
+                <ImageButton
+                    android:id="@+id/btn_expand_description"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_expand_more"
+                    android:background="@drawable/ripple_effect"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PST Silver Ledger App is a comprehensive solution designed specifically for silver businesses to efficiently manage customers and their transactions. The app provides robust tools for tracking customer details, managing multiple transactions per customer, and generating detailed PDF reports."
+                android:textSize="14sp"
+                android:lineSpacingExtra="6dp"
+                android:textAlignment="viewStart"
+                android:justificationMode="inter_word"
+                android:textColor="@color/dark_gray"
+                android:layout_marginTop="12dp"
+                android:maxLines="3" />
+        </LinearLayout>
+
+        <!-- Features Card with Custom Tags -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/info_card_background"
+            android:padding="15dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/star"
+
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premium Features"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/info_primary_dark" />
+            </LinearLayout>
+
+            <!-- Feature Tags in Flow Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- First Row of Features -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ Customer Management"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ Transaction Management"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- Second Row of Features -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ Recycle Bin"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ Data Recovery"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- Third Row of Features -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ PDF Export"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="✓ Secure Data"
+                        android:textSize="13sp"
+                        android:textColor="@color/feature_text"
+                        android:background="@drawable/feature_tag_background"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Stats Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/info_card_background"
+            android:padding="15dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="App Performance"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <!-- Users Stat -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500+"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Active Users"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Rating Stat -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.8"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Star Rating"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Downloads Stat -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1K+"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Downloads"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_gray"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btn_rate"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Rate App"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_outline"
+                android:textColor="@color/primary_color"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_share"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Share"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_outline"
+                android:textColor="@color/primary_color"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Close"
+                android:background="@drawable/button_primary"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

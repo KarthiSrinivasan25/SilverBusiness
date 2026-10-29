@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/abstract_background"
+    android:padding="8dp"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Add top margin for status bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:minHeight="24dp" />
+
+        <!-- Header with Advanced Abstract Style -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="@drawable/header_glass_morphism"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="8dp">
+
+            <!-- Main Title with Icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CUSTOMER"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4" />
+
+            </LinearLayout>
+
+            <!-- Stats Cards Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="3"
+                android:padding="5dp"
+                android:background="@drawable/stats_container_bg"
+                android:paddingVertical="12dp">
+
+                <!-- Total Customers Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/stat_card_bg"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/person"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_customers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05" />
+
+                </LinearLayout>
+
+                <!-- Total Pages Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/stat_card_bg"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/layers"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_pages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PAGES"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05" />
+
+                </LinearLayout>
+
+                <!-- Current Page Card -->
+                <LinearLayout
+                    android:id="@+id/card_current_page"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:background="@drawable/stat_card_current_bg"
+                    android:layout_margin="4dp"
+                    android:elevation="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/navigation"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_current_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#40000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CURRENT"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:alpha="0.8"
+                        android:letterSpacing="0.05" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Progress Indicator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="6dp"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Page Progress"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:alpha="0.7"
+                    android:layout_marginEnd="8dp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_page"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_weight="1"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:progressDrawable="@drawable/progress_bar_gradient"
+                    android:progress="30"
+                    android:max="100" />
+
+                <TextView
+                    android:id="@+id/tv_progress_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30%"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:alpha="0.7"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- NEW: Pagination with Page Numbers (Same as EditTransactionActivity) -->
+        <LinearLayout
+            android:id="@+id/pagination_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/abstract_container"
+            android:layout_marginBottom="24dp">
+
+            <!-- Page Navigation Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <!-- First Page Button -->
+                <ImageButton
+                    android:id="@+id/btn_first_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_first_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="First Page"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <!-- Previous Page Button -->
+                <ImageButton
+                    android:id="@+id/btn_previous_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_previous_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Previous Page"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <!-- Single Page Number Display -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- Current Page Number (Highlighted) -->
+                    <TextView
+                        android:id="@+id/tv_current_page_number"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/page_number_bg_selected" />
+
+                </LinearLayout>
+
+                <!-- Next Page Button -->
+                <ImageButton
+                    android:id="@+id/btn_next_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_next_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Next Page"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="8dp" />
+
+                <!-- Last Page Button -->
+                <ImageButton
+                    android:id="@+id/btn_last_page"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_last_page"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/stat_card_bg"
+                    android:contentDescription="Last Page"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <!-- Go to Page Input -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                android:background="@drawable/stats_container_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Go to page:"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/et_go_to_page"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:background="@drawable/go_to_text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:hint=""
+                    android:padding="4dp"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_pages_display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/ 0"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btn_go_to_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Go"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/go_button_bg"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Customer Cards List using RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customer_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@drawable/glass_morphism_effect" />
+
+
+
+        <!-- Abstract Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/abstract_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• PST Silver Ledger •"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:alpha="0.7"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:letterSpacing="0.2" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/abstract_divider" />
+
+        </LinearLayout>
+
+        <!-- Add bottom margin for navigation bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:minHeight="16dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tv_transaction_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:text="Transaction Name"
+        android:textColor="#2D3748"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_debit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="₹0.00"
+        android:textColor="#E53E3E"
+        android:textSize="14sp"
+        android:gravity="end" />
+
+    <TextView
+        android:id="@+id/tv_credit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="₹0.00"
+        android:textColor="#38A169"
+        android:textSize="14sp"
+        android:gravity="end" />
+
+</LinearLayout>

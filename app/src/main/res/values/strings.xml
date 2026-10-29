@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">PST Silver Ledger</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+    <string name="status">Status</string>
+    <string name="transaction_name">Transaction Name</string>
+    <string name="notes">Notes</string>
+    <string name="date">Date</string>
+    <string name="debit_weight">Debit Weight</string>
+    <string name="touch">Touch</string>
+    <string name="wastage">Wastage</string>
+    <string name="debit_pure_default">Debit Pure: 0.00</string>
+    <string name="particulars">Particulars</string>
+    <string name="credit_weight">Credit Weight</string>
+    <string name="credit_pure_default">Credit Pure: 0.00</string>
+    <string name="total_default">Total: 0.00</string>
+    <string name="remaining_default">Remaining: 0.00</string>
+    <string name="save_transaction">Save</string>
+    <string name="add_row">Add new row</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="view_customers">View Customers</string>
+    <string name="logout">Logout</string>
+
+    <string name="terms_and_conditions_content">
+    <![CDATA[
+    Welcome to PST Silver Ledger App!\n\n
+    By using our application, you agree to the following terms and conditions:\n\n
+    1. ACCOUNT TERMS\n
+    • You must be 13 years or older to use this app\n
+    • You must provide a valid email address\n
+    • You are responsible for keeping your account secure\n\n
+    2. ACCEPTABLE USE\n
+    • You may not use the app for any illegal purpose\n
+    • You may not violate any laws in your jurisdiction\n
+    • You may not copy, modify, or distribute the app\n\n
+    3. PRIVACY\n
+    • We collect and use your data as described in our Privacy Policy\n
+    • We implement security measures to protect your information\n
+    • You can request deletion of your data at any time\n\n
+    4. SERVICE TERMS\n
+    • We reserve the right to modify or terminate services\n
+    • Features may be added or removed at our discretion\n
+    • We are not liable for any service interruptions\n\n
+    5. LIMITATION OF LIABILITY\n
+    • PST Silver Ledger shall not be liable for any indirect damages\n
+    • We provide services \"as is\" without warranties\n    \n    By accepting these terms, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.
+    ]]>
+
+</string>
+
+    <string name="fingerprint_required">Fingerprint Required</string>
+    <string name="unlock_recycle_bin">Unlock Recycle Bin</string>
+    <string name="touch_sensor">Touch Sensor</string>
+    <string name="use_fingerprint_to_access">Use your fingerprint to access deleted records</string>
+    <string name="cancel">Cancel</string>
+    <string name="use_pin">Use PIN</string>
+
+    <string-array name="orientation_options">
+        <item>Auto</item>
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+</resources>

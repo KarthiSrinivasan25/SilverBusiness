@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "963987653243",
+    "project_id": "silver-business-app",
+    "storage_bucket": "silver-business-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963987653243:android:9f63e9c71cd370b90898de",
+        "android_client_info": {
+          "package_name": "com.example.silverbusinessapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABC-GwmY7NxWp5QpvllNLOLF-XYiPetzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

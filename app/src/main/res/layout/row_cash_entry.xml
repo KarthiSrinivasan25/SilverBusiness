@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:inputType="none"
+        android:focusable="false"
+        android:background="@drawable/input_background" />
+
+    <EditText
+        android:id="@+id/etDebitCash"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="Debit Cash"
+        android:inputType="numberDecimal"
+        android:background="@drawable/input_background" />
+
+    <EditText
+        android:id="@+id/etCreditCash"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="Credit Cash"
+        android:inputType="numberDecimal"
+        android:background="@drawable/input_background" />
+
+    <TextView
+        android:id="@+id/tvPure"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textColor="#000000"
+        android:background="@drawable/input_background" />
+</LinearLayout>

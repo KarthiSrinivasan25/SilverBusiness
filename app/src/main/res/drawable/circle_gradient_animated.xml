@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Outer diamond -->
+    <path
+        android:fillColor="#E8F5E9"
+        android:pathData="M60,10 L110,60 L60,110 L10,60 Z" />
+
+    <!-- Middle wave diamond -->
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M60,25 L95,60 L60,95 L25,60 Z" />
+
+    <!-- Inner wave diamond -->
+    <path
+        android:fillColor="#A5D6A7"
+        android:pathData="M60,40 L80,60 L60,80 L40,60 Z" />
+
+    <!-- Border -->
+
+</vector>

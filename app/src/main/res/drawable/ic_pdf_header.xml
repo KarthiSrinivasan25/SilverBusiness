@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="42dp"
+    android:height="42dp"
+    android:viewportWidth="42"
+    android:viewportHeight="42">
+
+    <!-- Circle Background -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M21,0A21,21 0,1 0,21 42A21,21 0,1 0,21 0" />
+
+    <!-- PDF Document -->
+    <path
+        android:fillColor="#3949AB"
+        android:pathData="M12,8h12l6,6v20H12z" />
+
+    <!-- Folded Corner -->
+    <path
+        android:fillColor="#7986CB"
+        android:pathData="M24,8v7h6z" />
+
+    <!-- Text Lines -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,19h10v2H16zM16,23h10v2H16zM16,27h7v2H16z" />
+
+</vector>

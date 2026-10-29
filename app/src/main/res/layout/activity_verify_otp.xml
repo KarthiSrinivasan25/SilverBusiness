@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/bg1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter 6-digit OTP"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:id="@+id/otp_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText android:id="@+id/otp1" style="@style/OtpBoxStyle"/>
+        <EditText android:id="@+id/otp2" style="@style/OtpBoxStyle"/>
+        <EditText android:id="@+id/otp3" style="@style/OtpBoxStyle"/>
+        <EditText android:id="@+id/otp4" style="@style/OtpBoxStyle"/>
+        <EditText android:id="@+id/otp5" style="@style/OtpBoxStyle"/>
+        <EditText android:id="@+id/otp6" style="@style/OtpBoxStyle"/>
+    </LinearLayout>
+</LinearLayout>

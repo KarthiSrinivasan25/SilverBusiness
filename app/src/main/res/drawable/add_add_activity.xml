@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+
+    <!-- Light grey status bar area -->
+   
+    <path
+        android:fillColor="#E8F5E9"
+        android:pathData="M0,100 C150,200 150,0 300,100 L300,300 L0,300 Z" />
+    <path
+        android:fillColor="#C8E6C9"
+        android:pathData="M0,150 C100,250 200,50 300,150 L300,300 L0,300 Z" />
+</vector>

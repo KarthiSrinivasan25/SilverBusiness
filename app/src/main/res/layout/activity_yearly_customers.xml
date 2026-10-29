@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/abstract_background"
+    android:fitsSystemWindows="true">
+
+    <!-- Header with Back Button + Year Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="@drawable/header_glass_morphism"
+        android:layout_margin="16dp"
+        android:elevation="8dp">
+
+
+        <!-- LEFT ARROW: Previous Year -->
+        <ImageButton
+            android:id="@+id/btn_prev_year"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/stat_card_bg"
+            android:contentDescription="Previous Year"
+            android:padding="8dp"
+            android:src="@drawable/ic_previous_page" />
+
+        <TextView
+            android:id="@+id/tv_year_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Year 2024"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4" />
+
+        <!-- RIGHT ARROW: Next Year -->
+        <ImageButton
+            android:id="@+id/btn_next_year"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/stat_card_bg"
+            android:contentDescription="Next Year"
+            android:padding="8dp"
+            android:src="@drawable/ic_previous_page"
+            android:rotation="180" />
+
+        <TextView
+            android:id="@+id/tv_year_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 records"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:alpha="0.8"
+            android:paddingStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Customer List for the Selected Year -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/yearly_customer_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/glass_morphism_effect" />
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/tv_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No records found for this year"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="gone" />
+
+</LinearLayout>

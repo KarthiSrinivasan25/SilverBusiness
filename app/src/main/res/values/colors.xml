@@ -1,0 +1,85 @@
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="primary">#6200EE</color>
+    <color name="purple_500">#009688</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="silver_chip_bg">#F8FAFC</color>
+
+    <color name="teal_700">#00796B</color>
+    <color name="red_600">#D32F2F</color>
+
+    <!-- Primary Colors -->
+    <color name="primary_color">#6366F1</color>
+    <color name="primary_dark">#4338CA</color>
+    <color name="secondary_color">#EC4899</color>
+
+    <!-- Background Colors -->
+    <color name="background_gradient_start">#F8FAFC</color>
+    <color name="background_gradient_end">#F1F5F9</color>
+    <color name="toolbar_background">#1E293B</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1E293B</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_tertiary">#94A3B8</color>
+
+    <!-- Status Colors -->
+    <color name="success_color">#10B981</color>
+    <color name="warning_color">#F59E0B</color>
+    <color name="error_color">#EF4444</color>
+    <color name="info_color">#3B82F6</color>
+
+    <!-- Component Colors -->
+    <color name="card_stroke">#E2E8F0</color>
+    <color name="divider_color">#F1F5F9</color>
+    <color name="shimmer_color">#E2E8F0</color>
+
+    <!-- Chip Colors -->
+    <color name="chip_active_background">#DCFCE7</color>
+    <color name="chip_active_stroke">#16A34A</color>
+    <color name="chip_inactive_background">#FEF3C7</color>
+    <color name="chip_inactive_stroke">#D97706</color>
+
+
+    <color name="black">#000000</color>
+
+    <color name="gray">#757575</color>
+    <color name="dark_gray">#424242</color>
+
+
+    <color name="card_background">#F8F9FA</color>
+    <color name="very_light_gray">#E8ECF0</color>
+    <color name="light_gray">#D1D5DB</color>
+    <color name="app_info_primary_color">#3B82F6</color>
+    <color name="info_primary_color">#1E40AF</color>
+
+
+    <color name="info_primary_dark">#1A237E</color>
+    <color name="accent_color">#FF4081</color>
+    <color name="feature_text">#1976D2</color>
+
+    <color name="teal_200">#80CBC4</color>
+
+
+    <color name="colorPrimary">#4361EE</color>
+    <color name="grey_400">#9E9E9E</color>
+
+
+    <color name="text_disabled">#CBD5E1</color>
+    <color name="divider">#F1F5F9</color>
+
+
+    <color name="green_500">#22C55E</color>
+    <color name="red_500">#EF4444</color>
+
+
+    <color name="sandal_color">#FFFEEE</color>
+
+
+    <color name="success_green">#4CAF50</color>
+
+
+    <!-- Add these colors -->
+    <color name="pdf_selected_bg">#FFF7F7</color>
+    <color name="pdf_selected_stroke">#BD0518</color>
+</resources>

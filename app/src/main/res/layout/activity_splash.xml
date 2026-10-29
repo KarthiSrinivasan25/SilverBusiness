@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:padding="20dp">
+
+    <!-- Loading Screen -->
+    <LinearLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/gradient_background">
+
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:indeterminateTint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Loading..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Please wait"
+            android:textColor="#80FFFFFF"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Terms & Conditions Screen -->
+    <LinearLayout
+        android:id="@+id/termsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/gradient_background"
+        android:visibility="gone">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Terms &amp; Conditions"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp" />
+
+        <!-- Content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to PST Silver Ledger App!\n\nBy using our application, you agree to the following terms and conditions:\n\n1. ACCOUNT TERMS\n• You must be 13 years or older to use this app\n• You must provide a valid email address\n• You are responsible for keeping your account secure\n\n2. ACCEPTABLE USE\n• You may not use the app for any illegal purpose\n• You may not violate any laws in your jurisdiction\n• You may not copy, modify, or distribute the app\n\n3. PRIVACY\n• We collect and use your data as described in our Privacy Policy\n• We implement security measures to protect your information\n• You can request deletion of your data at any time\n\n4. SERVICE TERMS\n• We reserve the right to modify or terminate services\n• Features may be added or removed at our discretion\n• We are not liable for any service interruptions\n\n5. LIMITATION OF LIABILITY\n• PST Silver Ledger shall not be liable for any indirect damages\n• We provide services &quot;as is&quot; without warranties"
+                    android:textColor="#E0E0E0"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Accept Checkbox -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="8dp">
+
+            <CheckBox
+                android:id="@+id/termsCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="I accept the Terms &amp; Conditions"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/button_primary"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:enabled="false"
+            android:alpha="0.5" />
+
+        <!-- Footer for Terms Screen -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="© ASD Tech Creation"
+            android:textColor="#80FFFFFF"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+    <!-- Main App Content (Hidden initially) -->
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Logo and Company Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Logo with circular background -->
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:background="@drawable/circle_background"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logo" />
+
+            </RelativeLayout>
+
+            <!-- Company Name -->
+            <TextView
+                android:id="@+id/companyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="PST Silver Ledger "
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.03"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- Tagline -->
+            <TextView
+                android:id="@+id/tagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Professional Business Solutions"
+                android:textColor="#80FFFFFF"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif" />
+
+        </LinearLayout>
+
+        <!-- Buttons Container -->
+        <LinearLayout
+            android:id="@+id/authButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="40dp"
+            android:visibility="gone">
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_primary"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif" />
+
+            <!-- Signup Button -->
+            <Button
+                android:id="@+id/signupBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_secondary"
+                android:text="Create Account"
+                android:textAllCaps="false"
+                android:textColor="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif" />
+
+        </LinearLayout>
+
+        <!-- Footer with Copyright Icon -->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:background="@drawable/footer_background"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center">-->
+
+<!--            &lt;!&ndash; Copyright Icon &ndash;&gt;-->
+<!--            <ImageView-->
+<!--                android:layout_width="14dp"-->
+<!--                android:layout_height="14dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:src="@drawable/developed_by"-->
+<!--            />-->
+
+<!--            &lt;!&ndash; Text &ndash;&gt;-->
+<!--            <TextView-->
+<!--                android:id="@+id/footerText"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="ASD Tech Creation"-->
+<!--                android:textColor="#80FFFFFF"-->
+<!--                android:textSize="12sp"-->
+<!--                android:fontFamily="sans-serif" />-->
+<!--        </LinearLayout>-->
+
+    </LinearLayout>
+
+</RelativeLayout>

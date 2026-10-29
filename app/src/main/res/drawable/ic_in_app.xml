@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+
+    <!-- Document -->
+    <path
+        android:fillColor="#3949AB"
+        android:pathData="M7,3h13l6,6v20H7z" />
+
+    <!-- Fold -->
+    <path
+        android:fillColor="#9FA8DA"
+        android:pathData="M20,3v7h6z" />
+
+    <!-- Lines -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11,14h10v2H11zM11,18h10v2H11zM11,22h7v2H11z" />
+
+</vector>

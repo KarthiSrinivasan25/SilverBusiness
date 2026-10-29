@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background"
+    android:elevation="8dp"
+    android:padding="20dp">
+
+    <!-- Dialog Header -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Row"
+        android:textColor="#2D3748"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        app:drawableStartCompat="@drawable/ic_add_circle"
+        android:drawableTint="#7E22CE" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E2E8F0"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Main Add Row Option -->
+    <LinearLayout
+        android:id="@+id/layout_main_add_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/ripple_effect12"
+        android:backgroundTint="#D1FBE0"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="10dp"
+
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_transaction_row"
+            android:padding="8dp"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transaction Row"
+                android:textColor="#059669"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="#059669"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E2E8F0"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Cash Add Row Option -->
+    <LinearLayout
+        android:id="@+id/layout_cash_add_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/ripple_effect123"
+        android:backgroundTint="#FFC7C7"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_cash"
+            android:padding="8dp"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cash Row"
+                android:textColor="#DC2626"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="#DC2626"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- Cancel Button -->
+    <Button
+        android:id="@+id/btn_cancel_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="Cancel"
+        android:textColor="#718096"
+        android:background="@drawable/cancel_button_bg"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>
