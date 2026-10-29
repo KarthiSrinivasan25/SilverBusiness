@@ -253,8 +253,11 @@ public class AddTransactionActivity extends AppCompatActivity {
                 for (View cashRow : dynamicCashRows) {
                     cashRow.setVisibility(isChecked ? View.VISIBLE : View.GONE);
                 }
+                // Cash rows are rendered inside container_dynamic_rows in the order
+                // selected by the user. Keep the legacy static cash card hidden so
+                // the new screen never opens a separate cash section.
+                layoutCashDetails.setVisibility(View.GONE);
                 if (isChecked) {
-                    layoutCashDetails.setVisibility(View.VISIBLE);
                     tvTotalDebitWeight.setVisibility(View.GONE);
                     tvTotalCreditWeight.setVisibility(View.GONE);
                     tvRemaining.setVisibility(View.GONE);
@@ -263,7 +266,6 @@ public class AddTransactionActivity extends AppCompatActivity {
                         calculateCombinedTotals();
                     }
                 } else {
-                    layoutCashDetails.setVisibility(View.GONE);
                     tvTotalDebitWeight.setVisibility(View.VISIBLE);
                     tvTotalCreditWeight.setVisibility(View.VISIBLE);
                     tvRemaining.setVisibility(View.VISIBLE);
