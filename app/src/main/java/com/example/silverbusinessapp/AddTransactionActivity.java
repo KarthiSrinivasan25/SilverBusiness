@@ -87,6 +87,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     private LinearLayout dynamicCashRowsContainer;
     private List<View> dynamicCashRows = new ArrayList<>();
+    private List<View> dynamicKachaRows = new ArrayList<>();
 
     private static final int INPUT_HEIGHT_DP = 42;
 
@@ -187,15 +188,8 @@ public class AddTransactionActivity extends AppCompatActivity {
         styleEditText(etDebitRateCutting);
         styleEditText(etCreditRateCutting);
 
-        dynamicCashRowsContainer = new LinearLayout(this);
-        dynamicCashRowsContainer.setOrientation(LinearLayout.VERTICAL);
-        dynamicCashRowsContainer.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        layoutCashDetails.addView(dynamicCashRowsContainer);
-
+        // Dynamic Weight, Cash and Kacha rows share one container so the user-selected
+        // order is preserved visually. Static cash fields remain in the legacy cash card.
         createCashTotalsSection();
 
         if (btnRemoveCashRow.getParent() != null) {
@@ -218,6 +212,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         spinnerStatus = findViewById(R.id.spinner_status);
         containerDynamicRows = findViewById(R.id.container_dynamic_rows);
+        dynamicCashRowsContainer = containerDynamicRows;
 
         tvClosedLabel = new TextView(this);
         tvClosedLabel.setText("Closed");
@@ -255,6 +250,9 @@ public class AddTransactionActivity extends AppCompatActivity {
         showCashDetails.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                for (View cashRow : dynamicCashRows) {
+                    cashRow.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                }
                 if (isChecked) {
                     layoutCashDetails.setVisibility(View.VISIBLE);
                     tvTotalDebitWeight.setVisibility(View.GONE);
@@ -316,6 +314,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         for (int i = 0; i < containerDynamicRows.getChildCount(); i++) {
             View wrapperView = containerDynamicRows.getChildAt(i);
+            if (dynamicCashRows.contains(wrapperView) || dynamicKachaRows.contains(wrapperView)) continue;
             if (!(wrapperView instanceof LinearLayout)) continue;
 
             LinearLayout wrapper = (LinearLayout) wrapperView;
@@ -553,38 +552,8 @@ public class AddTransactionActivity extends AppCompatActivity {
         etCreditRateCutting.addTextChangedListener(cashWatcher);
 
         Button fabAddRow = findViewById(R.id.fab_add_row);
-        fabAddRow.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            LayoutInflater inflater = getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.dialog_add_row_options, null);
-            builder.setView(dialogView);
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
-            if (dialog.getWindow() != null) {
-                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                dialog.getWindow().setLayout(
-                        (int)(getResources().getDisplayMetrics().widthPixels * 0.85),
-                        WindowManager.LayoutParams.WRAP_CONTENT
-                );
-            }
-
-            LinearLayout layoutMainRow = dialogView.findViewById(R.id.layout_main_add_row);
-            layoutMainRow.setOnClickListener(v -> {
-                addDynamicTransactionRow();
-                dialog.dismiss();
-            });
-
-            LinearLayout layoutCashRow = dialogView.findViewById(R.id.layout_cash_add_row);
-            layoutCashRow.setOnClickListener(v -> {
-                addDynamicCashRow();
-                dialog.dismiss();
-            });
-
-            Button btnCancel = dialogView.findViewById(R.id.btn_cancel_dialog);
-            btnCancel.setOnClickListener(v -> dialog.dismiss());
-        });
+        fabAddRow.setText("+");
+        fabAddRow.setOnClickListener(view -> showAddRowMenu());
 
         Button btnSave = findViewById(R.id.btn_save_transaction);
         btnSave.setOnClickListener(v -> saveTransaction());
@@ -611,6 +580,112 @@ public class AddTransactionActivity extends AppCompatActivity {
         });
     }
 
+    private void showAddRowMenu() {
+        LinearLayout menu = new LinearLayout(this);
+        menu.setOrientation(LinearLayout.VERTICAL);
+        int pad = dpToPx(16);
+        menu.setPadding(pad, pad, pad, pad);
+
+        TextView title = new TextView(this);
+        title.setText("Add Row");
+        title.setTextSize(18);
+        title.setTypeface(null, Typeface.BOLD);
+        title.setTextColor(Color.parseColor("#4F46E5"));
+        title.setPadding(0, 0, 0, dpToPx(8));
+        menu.addView(title);
+
+        CheckBox cashEnable = new CheckBox(this);
+        cashEnable.setText("Enable Cash Rows");
+        cashEnable.setTextSize(14);
+        cashEnable.setChecked(showCashDetails.isChecked());
+        menu.addView(cashEnable);
+
+        TextView weightOption = createMenuOption("＋  Weight Row");
+        TextView cashOption = createMenuOption("＋  Cash Row");
+        TextView kachaOption = createMenuOption("＋  Kacha Calculation");
+        menu.addView(weightOption);
+        menu.addView(cashOption);
+        menu.addView(kachaOption);
+        cashOption.setEnabled(cashEnable.isChecked());
+        cashOption.setAlpha(cashEnable.isChecked() ? 1f : 0.4f);
+
+        AlertDialog dialog = new AlertDialog.Builder(this).setView(menu).create();
+        cashEnable.setOnCheckedChangeListener((button, checked) -> {
+            showCashDetails.setChecked(checked);
+            cashOption.setEnabled(checked);
+            cashOption.setAlpha(checked ? 1f : 0.4f);
+        });
+        weightOption.setOnClickListener(v -> { addDynamicTransactionRow(); dialog.dismiss(); });
+        cashOption.setOnClickListener(v -> {
+            if (!showCashDetails.isChecked()) {
+                Toast.makeText(this, "Enable Cash Rows first", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            addDynamicCashRow(); dialog.dismiss();
+        });
+        kachaOption.setOnClickListener(v -> { addDynamicKachaRow(); dialog.dismiss(); });
+        dialog.show();
+    }
+
+    private TextView createMenuOption(String text) {
+        TextView option = new TextView(this);
+        option.setText(text);
+        option.setTextSize(15);
+        option.setTextColor(Color.parseColor("#1F2937"));
+        option.setPadding(dpToPx(12), dpToPx(14), dpToPx(12), dpToPx(14));
+        option.setBackgroundResource(android.R.drawable.list_selector_background);
+        return option;
+    }
+
+    private void addDynamicKachaRow() {
+        LinearLayout card = new LinearLayout(this);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12));
+        card.setBackgroundColor(Color.WHITE);
+        card.setElevation(dpToPx(2));
+        LinearLayout.LayoutParams cp = new LinearLayout.LayoutParams(-1, -2);
+        cp.setMargins(0, 0, 0, dpToPx(12));
+        card.setLayoutParams(cp);
+
+        TextView heading = new TextView(this);
+        heading.setText("KACHA CALCULATION");
+        heading.setTextColor(Color.parseColor("#6D28D9"));
+        heading.setTextSize(14);
+        heading.setTypeface(null, Typeface.BOLD);
+        card.addView(heading);
+
+        EditText date = createEditText("Date (dd-mm-yyyy)", INPUT_HEIGHT_DP);
+        date.setFocusable(false); date.setClickable(true);
+        date.setOnClickListener(v -> openDatePicker(date));
+        EditText name = createEditText("Name / Particulars", INPUT_HEIGHT_DP);
+        card.addView(createLabel("Date", Color.DKGRAY)); card.addView(date);
+        card.addView(createLabel("Name / Particulars", Color.DKGRAY)); card.addView(name);
+
+        LinearLayout columns = new LinearLayout(this);
+        columns.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout debit = new LinearLayout(this); debit.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout credit = new LinearLayout(this); credit.setOrientation(LinearLayout.VERTICAL);
+        debit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1));
+        credit.setLayoutParams(new LinearLayout.LayoutParams(0, -2, 1));
+        debit.setPadding(0, 0, dpToPx(6), 0); credit.setPadding(dpToPx(6), 0, 0, 0);
+        String[] labels = {"Kacha Pure", "Rate Cutting", "Cash", "Final Kacha Pure"};
+        EditText[] debitFields = new EditText[4];
+        EditText[] creditFields = new EditText[4];
+        for (int i = 0; i < 4; i++) {
+            debit.addView(createLabel("Debit " + labels[i], Color.parseColor("#059669")));
+            debitFields[i] = createNumberEditText("0.00", INPUT_HEIGHT_DP);
+            debit.addView(debitFields[i]);
+            credit.addView(createLabel("Credit " + labels[i], Color.parseColor("#DC2626")));
+            creditFields[i] = createNumberEditText("0.00", INPUT_HEIGHT_DP);
+            credit.addView(creditFields[i]);
+        }
+        columns.addView(debit); columns.addView(credit); card.addView(columns);
+        card.setTag(new Object[]{date, name, debitFields[0], creditFields[0], debitFields[1], creditFields[1], debitFields[2], creditFields[2], debitFields[3], creditFields[3]});
+        setupSwipeGesture(card, true);
+        containerDynamicRows.addView(card);
+        dynamicKachaRows.add(card);
+    }
+
     private void addDynamicTransactionRow() {
         LinearLayout rowWrapper = new LinearLayout(this);
         rowWrapper.setOrientation(LinearLayout.VERTICAL);
@@ -624,6 +699,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         wrapperParams.setMargins(0, 0, 0, 12);
         rowWrapper.setLayoutParams(wrapperParams);
         rowWrapper.setPadding(0, 16, 0, 16);
+        rowWrapper.setTag("WEIGHT_ROW");
 
         setupSwipeGesture(rowWrapper, true);
         rowWrapper.setClickable(true);
@@ -910,6 +986,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         parentRow.addView(rightCol);
         rowContainer.addView(parentRow);
 
+        rowContainer.setVisibility(showCashDetails.isChecked() ? View.VISIBLE : View.GONE);
         dynamicCashRowsContainer.addView(rowContainer);
         dynamicCashRows.add(rowContainer);
 
@@ -1143,6 +1220,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         if (isTransactionRow) {
             animateRowRemoval(viewToDelete, () -> {
                 containerDynamicRows.removeView(viewToDelete);
+                dynamicKachaRows.remove(viewToDelete);
                 calculateTotalsForAllRows();
                 if (showCashDetails.isChecked()) {
                     calculateCombinedTotals();
@@ -1274,8 +1352,12 @@ public class AddTransactionActivity extends AppCompatActivity {
         if (staticCreditPure != 0) transactionData.put("staticCreditPure", staticCreditPure);
 
         Map<String, Object> dynamicRows = new HashMap<>();
+        int weightRowIndex = 0;
         for (int i = 0; i < containerDynamicRows.getChildCount(); i++) {
-            LinearLayout wrapper = (LinearLayout) containerDynamicRows.getChildAt(i);
+            View childView = containerDynamicRows.getChildAt(i);
+            if (dynamicCashRows.contains(childView) || dynamicKachaRows.contains(childView)) continue;
+            if (!(childView instanceof LinearLayout)) continue;
+            LinearLayout wrapper = (LinearLayout) childView;
             LinearLayout parentRow = (LinearLayout) wrapper.getChildAt(0);
             LinearLayout left = (LinearLayout) parentRow.getChildAt(0);
             LinearLayout right = (LinearLayout) parentRow.getChildAt(1);
@@ -1309,10 +1391,32 @@ public class AddTransactionActivity extends AppCompatActivity {
             if (cWastage != 0) rowData.put("creditWastage", cWastage);
             if (cPure != 0) rowData.put("creditPure", cPure);
 
-            dynamicRows.put("row" + (i + 1), rowData);
+            dynamicRows.put("row" + (++weightRowIndex), rowData);
         }
 
         if (!dynamicRows.isEmpty()) transactionData.put("dynamicRows", dynamicRows);
+
+        // Kacha calculation rows are stored separately until its business formula is provided.
+        Map<String, Object> kachaCalculations = new HashMap<>();
+        int kachaIndex = 0;
+        for (View kachaView : dynamicKachaRows) {
+            Object tag = kachaView.getTag();
+            if (!(tag instanceof Object[])) continue;
+            Object[] f = (Object[]) tag;
+            Map<String, Object> row = new HashMap<>();
+            String[] keys = {"date", "name", "debitKachaPure", "creditKachaPure", "debitRateCutting", "creditRateCutting", "debitCash", "creditCash", "debitFinalPure", "creditFinalPure"};
+            for (int k = 0; k < f.length; k++) {
+                if (f[k] instanceof EditText) {
+                    String value = ((EditText) f[k]).getText().toString().trim();
+                    if (!value.isEmpty()) {
+                        if (k == 0 || k == 1) row.put(keys[k], value);
+                        else row.put(keys[k], safeParseDouble(value));
+                    }
+                }
+            }
+            if (!row.isEmpty()) kachaCalculations.put("row" + (++kachaIndex), row);
+        }
+        if (!kachaCalculations.isEmpty()) transactionData.put("kachaCalculations", kachaCalculations);
 
         double totalDebitPure = totalDebit + staticDebitPure;
         double totalCreditPure = totalCredit + staticCreditPure;
@@ -1472,6 +1576,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         for (int i = 0; i < containerDynamicRows.getChildCount(); i++) {
             View wrapperView = containerDynamicRows.getChildAt(i);
+            if (dynamicCashRows.contains(wrapperView) || dynamicKachaRows.contains(wrapperView)) continue;
             if (!(wrapperView instanceof LinearLayout)) continue;
 
             LinearLayout wrapper = (LinearLayout) wrapperView;
